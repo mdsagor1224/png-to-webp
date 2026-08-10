@@ -1,0 +1,171 @@
+/* PNG to WebP Converter — Admin Styles */
+
+.ptw-wrap .ptw-subtitle {
+	font-size: 14px;
+	color: #50575e;
+	margin-top: -8px;
+	margin-bottom: 20px;
+}
+
+.ptw-cards {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(160px, 1fr));
+	gap: 16px;
+	margin: 20px 0;
+}
+
+@media (max-width: 782px) {
+	.ptw-cards {
+		grid-template-columns: repeat(2, minmax(140px, 1fr));
+	}
+}
+
+.ptw-card {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.ptw-card-label {
+	font-size: 13px;
+	color: #50575e;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+}
+
+.ptw-card-value {
+	font-size: 28px;
+	font-weight: 600;
+	color: #1d2327;
+}
+
+.ptw-actions {
+	margin: 20px 0;
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.ptw-bulk-toolbar {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	margin: 16px 0;
+}
+
+.ptw-dropzone {
+	border: 2px dashed #8c8f94;
+	border-radius: 6px;
+	padding: 40px 20px;
+	text-align: center;
+	background: #fff;
+	color: #50575e;
+	margin-bottom: 24px;
+	cursor: pointer;
+	transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.ptw-dropzone:hover,
+.ptw-dropzone:focus,
+.ptw-dropzone.ptw-dragover {
+	border-color: #2271b1;
+	background: #f0f6fc;
+	outline: none;
+}
+
+.ptw-dropzone p {
+	margin: 4px 0;
+}
+
+.ptw-dropzone-note {
+	font-size: 12px;
+	color: #787c82;
+}
+
+.ptw-progress-wrap {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+.ptw-progress-bar {
+	background: #f0f0f1;
+	border-radius: 4px;
+	height: 20px;
+	overflow: hidden;
+	border: 1px solid #c3c4c7;
+}
+
+.ptw-progress-bar-fill {
+	height: 100%;
+	width: 0%;
+	background: #2271b1;
+	transition: width 0.2s ease;
+}
+
+.ptw-progress-stats {
+	display: flex;
+	gap: 24px;
+	list-style: none;
+	margin: 12px 0;
+	padding: 0;
+	font-weight: 600;
+}
+
+.ptw-results-table {
+	margin-top: 16px;
+}
+
+.ptw-status {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	font-weight: 600;
+}
+
+.ptw-status-exists,
+.ptw-status-converted {
+	color: #0a7d31;
+}
+
+.ptw-status-exists::before,
+.ptw-status-converted::before {
+	content: "\2713";
+}
+
+.ptw-status-failed {
+	color: #b32d2e;
+}
+
+.ptw-status-failed::before {
+	content: "\2715";
+}
+
+.ptw-status-skipped {
+	color: #996800;
+}
+
+.ptw-status-none {
+	color: #787c82;
+}
+
+.ptw-convert,
+.ptw-regenerate {
+	cursor: pointer;
+}
+
+#ptw_quality {
+	vertical-align: middle;
+	width: 260px;
+}
+
+#ptw_quality_value {
+	font-weight: 600;
+	margin-left: 8px;
+}
