@@ -8,6 +8,7 @@
  *
  * @package PNG_To_WebP_Converter
  */
+ 
 
 // If uninstall is not called from WordPress, exit.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
