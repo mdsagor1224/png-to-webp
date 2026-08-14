@@ -76,6 +76,7 @@ class PTW_Converter {
 					return true;
 				}
 			} catch ( \Throwable $e ) {
+				unset( $e );
 				// Ignore and report unsupported below.
 			}
 		}
@@ -104,7 +105,7 @@ class PTW_Converter {
 		}
 
 		// Verify real file type/MIME, not just the extension or stored meta.
-		$filetype = wp_check_filetype_and_ext( $file, basename( $file ) );
+		$filetype  = wp_check_filetype_and_ext( $file, basename( $file ) );
 		$real_mime = ! empty( $filetype['type'] ) ? $filetype['type'] : get_post_mime_type( $attachment_id );
 
 		$allowed = self::get_allowed_mime_types();
@@ -159,7 +160,7 @@ class PTW_Converter {
 	 */
 	public static function convert_attachment( $attachment_id, $args = array() ) {
 		$attachment_id = absint( $attachment_id );
-		$args           = wp_parse_args(
+		$args          = wp_parse_args(
 			$args,
 			array(
 				'regenerate' => false,
@@ -175,10 +176,10 @@ class PTW_Converter {
 
 		if ( $existing_webp_id && ! $args['regenerate'] ) {
 			return array(
-				'status'         => 'skipped',
-				'message'        => __( 'WebP Already Exists', 'png-to-webp-converter' ),
-				'attachment_id'  => $attachment_id,
-				'webp_id'        => $existing_webp_id,
+				'status'        => 'skipped',
+				'message'       => __( 'WebP Already Exists', 'png-to-webp-converter' ),
+				'attachment_id' => $attachment_id,
+				'webp_id'       => $existing_webp_id,
 			);
 		}
 
@@ -186,7 +187,7 @@ class PTW_Converter {
 		$quality  = isset( $settings['quality'] ) ? absint( $settings['quality'] ) : 80;
 		$quality  = max( 1, min( 100, $quality ) );
 
-		$source_file = get_attached_file( $attachment_id );
+		$source_file   = get_attached_file( $attachment_id );
 		$original_size = file_exists( $source_file ) ? filesize( $source_file ) : 0;
 
 		$path_info  = pathinfo( $source_file );
@@ -201,7 +202,7 @@ class PTW_Converter {
 		 * Imagick APIs. This is important on local XAMPP installations where
 		 * the WordPress editor and PHP extension capability can disagree.
 		 */
-		$saved = false;
+		$saved      = false;
 		$last_error = null;
 
 		$editor = wp_get_image_editor( $source_file );
@@ -233,7 +234,7 @@ class PTW_Converter {
 		// Direct GD fallback.
 		if ( false === $saved && function_exists( 'imagewebp' ) ) {
 			$gd_image = false;
-			$mime = get_post_mime_type( $attachment_id );
+			$mime     = get_post_mime_type( $attachment_id );
 
 			if ( 'image/png' === $mime && function_exists( 'imagecreatefrompng' ) ) {
 				$gd_image = @imagecreatefrompng( $source_file ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
@@ -284,11 +285,14 @@ class PTW_Converter {
 
 		if ( false === $saved || empty( $saved['path'] ) || ! file_exists( $saved['path'] ) ) {
 			if ( $last_error instanceof WP_Error && $last_error->get_error_message() ) {
-				return new WP_Error( 'ptw_conversion_failed', sprintf(
-					/* translators: %s: underlying image processing error. */
-					__( 'WebP conversion failed: %s', 'png-to-webp-converter' ),
-					sanitize_text_field( $last_error->get_error_message() )
-				) );
+				return new WP_Error(
+					'ptw_conversion_failed',
+					sprintf(
+						/* translators: %s: underlying image processing error. */
+						__( 'WebP conversion failed: %s', 'png-to-webp-converter' ),
+						sanitize_text_field( $last_error->get_error_message() )
+					)
+				);
 			}
 			return new WP_Error( 'ptw_webp_unsupported', __( 'WebP conversion is not available. Enable WebP support in PHP GD or Imagick.', 'png-to-webp-converter' ) );
 		}

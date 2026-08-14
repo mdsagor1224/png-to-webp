@@ -112,13 +112,13 @@ class PTW_Admin {
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 				'nonce'   => wp_create_nonce( 'ptw_ajax_nonce' ),
 				'i18n'    => array(
-					'converting'       => __( 'Converting…', 'png-to-webp-converter' ),
-					'converted'        => __( 'WebP Created', 'png-to-webp-converter' ),
-					'failed'           => __( 'Conversion failed', 'png-to-webp-converter' ),
+					'converting'        => __( 'Converting…', 'png-to-webp-converter' ),
+					'converted'         => __( 'WebP Created', 'png-to-webp-converter' ),
+					'failed'            => __( 'Conversion failed', 'png-to-webp-converter' ),
 					'confirmRegenerate' => __( 'Regenerate the WebP version of this image?', 'png-to-webp-converter' ),
-					'noImagesFound'    => __( 'No convertible images were found.', 'png-to-webp-converter' ),
-					'startConversion'  => __( 'Start Conversion', 'png-to-webp-converter' ),
-					'dropHere'         => __( 'Drop images here', 'png-to-webp-converter' ),
+					'noImagesFound'     => __( 'No convertible images were found.', 'png-to-webp-converter' ),
+					'startConversion'   => __( 'Start Conversion', 'png-to-webp-converter' ),
+					'dropHere'          => __( 'Drop images here', 'png-to-webp-converter' ),
 				),
 			)
 		);
@@ -132,8 +132,8 @@ class PTW_Admin {
 			wp_die( esc_html__( 'You do not have permission to access this page.', 'png-to-webp-converter' ) );
 		}
 
-		$stats           = PTW_Media::get_stats();
-		$webp_supported  = PTW_Converter::is_webp_supported();
+		$stats          = PTW_Media::get_stats();
+		$webp_supported = PTW_Converter::is_webp_supported();
 		?>
 		<div class="wrap ptw-wrap">
 			<h1><?php esc_html_e( 'PNG to WebP Converter', 'png-to-webp-converter' ); ?></h1>

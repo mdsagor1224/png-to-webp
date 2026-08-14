@@ -50,12 +50,12 @@ class PTW_Ajax {
 	public function handle_convert_single() {
 		$this->verify_request();
 
-		if ( empty( $_POST['attachment_id'] ) ) {
+		if ( empty( $_POST['attachment_id'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce already verified in self::verify_request() above.
 			wp_send_json_error( array( 'message' => __( 'Missing attachment ID.', 'png-to-webp-converter' ) ) );
 		}
 
-		$attachment_id = absint( $_POST['attachment_id'] );
-		$regenerate    = ! empty( $_POST['regenerate'] );
+		$attachment_id = absint( $_POST['attachment_id'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce already verified in self::verify_request() above.
+		$regenerate    = ! empty( $_POST['regenerate'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce already verified in self::verify_request() above.
 
 		$result = PTW_Converter::convert_attachment( $attachment_id, array( 'regenerate' => $regenerate ) );
 
@@ -74,11 +74,11 @@ class PTW_Ajax {
 	public function handle_convert_batch_item() {
 		$this->verify_request();
 
-		if ( empty( $_POST['attachment_id'] ) ) {
+		if ( empty( $_POST['attachment_id'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce already verified in self::verify_request() above.
 			wp_send_json_error( array( 'message' => __( 'Missing attachment ID.', 'png-to-webp-converter' ) ) );
 		}
 
-		$attachment_id = absint( $_POST['attachment_id'] );
+		$attachment_id = absint( $_POST['attachment_id'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce already verified in self::verify_request() above.
 
 		$result = PTW_Converter::convert_attachment( $attachment_id );
 
