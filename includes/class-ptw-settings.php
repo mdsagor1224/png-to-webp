@@ -33,11 +33,11 @@ class PTW_Settings {
 	 */
 	public static function get_default_settings() {
 		return array(
-			'quality'          => 80,
-			'keep_original'    => 1,
-			'auto_convert'     => 0,
-			'convert_jpg'      => 1,
-			'convert_png'      => 1,
+			'quality'       => 80,
+			'keep_original' => 1,
+			'auto_convert'  => 0,
+			'convert_jpg'   => 1,
+			'convert_png'   => 1,
 		);
 	}
 
@@ -121,7 +121,7 @@ class PTW_Settings {
 		$defaults  = self::get_default_settings();
 		$sanitized = array();
 
-		$quality             = isset( $input['quality'] ) ? absint( $input['quality'] ) : $defaults['quality'];
+		$quality              = isset( $input['quality'] ) ? absint( $input['quality'] ) : $defaults['quality'];
 		$sanitized['quality'] = max( 1, min( 100, $quality ) );
 
 		$sanitized['keep_original'] = ! empty( $input['keep_original'] ) ? 1 : 0;

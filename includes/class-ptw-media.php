@@ -207,11 +207,11 @@ class PTW_Media {
 			if ( is_array( $stats ) ) {
 				$total_original += isset( $stats['original_size'] ) ? (int) $stats['original_size'] : 0;
 				$total_webp     += isset( $stats['webp_size'] ) ? (int) $stats['webp_size'] : 0;
-				$converted++;
+				++$converted;
 			}
 		}
 
-		$eligible_total = self::count_eligible_images();
+		$eligible_total  = self::count_eligible_images();
 		$conversion_rate = $eligible_total > 0 ? round( ( $converted / $eligible_total ) * 100 ) : 0;
 
 		$stats = array(
