@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       PNG to WebP Converter
  * Description:       Convert PNG and JPG images to WebP directly from your WordPress dashboard. Fast, simple, and privacy-friendly.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            Md Sagor
  * Author URI:        https://sagor1224.vercel.app/
  * License:           GPLv2 or later
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants.
-define( 'PTW_VERSION', '1.0.1' );
+define( 'PTW_VERSION', '1.0.2' );
 define( 'PTW_PLUGIN_FILE', __FILE__ );
 define( 'PTW_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PTW_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

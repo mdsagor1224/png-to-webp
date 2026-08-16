@@ -1,10 +1,10 @@
 === PNG to WebP Converter ===
-Contributors: yourwporgusername
+Contributors: mdsagor1224, alkesh7
 Tags: webp, image optimization, png, jpg, media library
 Requires at least: 6.4
-Tested up to: 6.6
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,18 +93,24 @@ No. The plugin has no tracking, telemetry, or external communication of any kind
 
 == Changelog ==
 
-= 1.0.0 =
-* Initial release: single-image conversion, bulk conversion, automatic conversion on upload, adjustable quality, Media Library integration, dashboard statistics.
-
-== Upgrade Notice ==
-
-= 1.0.0 =
-Initial release.
-
-
-== Changelog ==
+= 1.0.2 =
+* Fixed a Stable Tag / plugin version mismatch in readme.txt.
+* Updated "Tested up to" for current WordPress compatibility.
+* Resolved all PHPCS/WordPress Coding Standards errors and warnings.
+* Added maintainer/contributor credit.
 
 = 1.0.1 =
 * Improved WebP capability detection.
 * Added GD and Imagick fallback conversion when the WordPress image editor reports WebP as unsupported.
 * Improved error messages for local XAMPP and hosting environments.
+
+= 1.0.0 =
+* Initial release: single-image conversion, bulk conversion, automatic conversion on upload, adjustable quality, Media Library integration, dashboard statistics.
+
+== Upgrade Notice ==
+
+= 1.0.2 =
+Coding standards and WordPress.org metadata compliance update. No functional changes; safe to update.
+
+= 1.0.0 =
+Initial release.
